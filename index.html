@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+     <title>Eatery Cafe and Restaurant Template</title>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/animate.css">
+     <link rel="stylesheet" href="css/owl.carousel.css">
+     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+     <link rel="stylesheet" href="css/magnific-popup.css">
+     <link rel="stylesheet" href="css/templatemo-style.css">
+
+</head>
+
+<body>
+
+     <!-- APP-->
+     <div id="app">
+          <!-- PRE LOADER -->
+          <section class="preloader">
+               <div class="spinner">
+                    <span class="spinner-rotate"></span>
+               </div>
+          </section>
+
+
+          <!-- MENU -->
+          <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+               <div class="container">
+                    <div class="navbar-header">
+                         <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                              <span class="icon icon-bar"></span>
+                              <span class="icon icon-bar"></span>
+                              <span class="icon icon-bar"></span>
+                         </button>
+
+                         <!-- lOGO TEXT HERE -->
+                         <a :href="storefront.homepage" class="navbar-brand">{{ storefront.store_Name }}</a>
+                    </div>
+
+                    <!-- MENU LINKS -->
+                    <div class="collapse navbar-collapse">
+                         <ul class="nav navbar-nav navbar-nav-first">
+                              <li v-for="navbar_Item in navbar_Items"><a :href="navbar_Item.href" class="smoothScroll">{{ navbar_Item.name }}</a></li>
+                         </ul>
+
+                         <ul class="nav navbar-nav navbar-right">
+                              <li><a href="#">{{ storefront.call_Now_Text }}<i class="fa fa-phone"></i> {{ storefront.phone }}</a></li>
+                              <a href="#footer" class="section-btn">{{ storefront.book_text }}</a>
+                         </ul>
+                    </div>
+               </div>
+          </section>
+
+
+          <!-- HOME -->
+          <section id="home" class="slider" data-stellar-background-ratio="0.5">
+               <div class="row">
+                    <div class="owl-carousel owl-theme">
+                         <div v-for="slide_Show in slide_Shows" :class="slide_Show.class">
+                              <div class="caption">
+                                   <div class="container">
+                                        <div class="col-md-8 col-sm-12">
+                                             <h3>{{ slide_Show.first_Title }}</h3>
+                                             <h1>{{ slide_Show.second_Title }}</h1>
+                                             <a :href="slide_Show.href"
+                                                  class="section-btn btn btn-default smoothScroll">{{ slide_Show.button_Text }}</a>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+
+               </div>
+          </section>
+
+
+          <!-- ABOUT -->
+          <section id="about" data-stellar-background-ratio="0.5">
+               <div class="container">
+                    <div class="row">
+                         <div class="col-md-6 col-sm-12">
+                              <div class="about-info">
+                                   <div class="section-title wow fadeInUp" data-wow-delay="0.2s">
+                                        <h4>{{ about_Info.first_Title }}</h4>
+                                        <h2>{{ about_Info.second_Title }}</h2>
+                                   </div>
+
+                                   <div class="wow fadeInUp" data-wow-delay="0.4s">
+                                        <p v-for="story in about_Info.stories"> {{ story }}</p>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <div class="col-md-6 col-sm-12">
+                              <div class="wow fadeInUp about-image" data-wow-delay="0.6s">
+                                   <img src="images/about-image.jpg" class="img-responsive" alt="">
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </section>
+
+
+          <!-- TEAM -->
+          <section id="team" data-stellar-background-ratio="0.5">
+               <div class="container">
+                    <div class="row">
+                         <div class="col-md-12 col-sm-12">
+                              <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                                   <h2>{{ team.first_Title }}</h2>
+                                   <h4>{{ team.second_Title }}</h4>
+                              </div>
+                         </div>
+
+                         <div class="col-md-4 col-sm-4" v-for="chef in team.chefs">
+                              <div class="team-thumb wow fadeInUp" data-wow-delay="0.4s">
+                                   <img :src="chef.img" class="img-responsive" alt="">
+                                   <div class="team-hover">
+                                        <div class="team-item">
+                                             <h4>{{ chef.hover_Text }}</h4>
+                                             <ul class="social-icon">
+                                                  <li><a :href="team.chefs.linkedin" class="fa fa-instagram"></a></li>
+                                                  <li><a :href="team.chefs.email" class="fa fa-flickr"></a></li>
+                                             </ul>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="team-info">
+                                   <h3>{{ chef.name }}</h3>
+                                   <p>{{ chef.position }}</p>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </section>
+
+          <!-- MENU-->
+          <section id="menu" data-stellar-background-ratio="0.5">
+               <div class="container">
+                    <div class="row">
+                         <div class="col-md-12 col-sm-12">
+                              <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                                   <h2>{{ menu.first_Title }}</h2>
+                                   <h4>{{ menu.second_Title }}</h4>
+                              </div>
+                         </div>
+
+                         <div class="col-md-4 col-sm-6" v-for="food_list in menu.food_lists">
+                              <!-- MENU THUMB -->
+                              <div class="menu-thumb">
+                                   <a :href="food_list.img" class="image-popup" :title="food_list.name">
+                                        <img :src="food_list.img" class="img-responsive" alt="">
+
+                                        <div class="menu-info">
+                                             <div class="menu-item">
+                                                  <h3>{{ food_list.name }}</h3>
+                                                  <p>{{ food_list.categories }}</p>
+                                             </div>
+                                             <div class="menu-price">
+                                                  <span>{{ food_list.price }}</span>
+                                             </div>
+                                        </div>
+                                   </a>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </section>
+
+
+          <!-- TESTIMONIAL -->
+          <section id="testimonial" data-stellar-background-ratio="0.5">
+               <div class="overlay"></div>
+               <div class="container">
+                    <div class="row">
+
+                         <div class="col-md-12 col-sm-12">
+                              <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                                   <h2>{{ testimonials.title }}</h2>
+                              </div>
+                         </div>
+
+                         <div class="col-md-offset-2 col-md-8 col-sm-12">
+                              <div class="owl-carousel owl-theme">
+                                   <div class="item" v-for="comment in testimonials.comments">
+                                        <p>{{ comment.text }}</p>
+                                        <div class="tst-author">
+                                             <h4>{{ comment.name }}</h4>
+                                             <span>{{ comment.nationality }}</span>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+
+                    </div>
+               </div>
+          </section>
+
+
+          <!-- CONTACT -->
+          <section id="contact" data-stellar-background-ratio="0.5">
+               <div class="container">
+                    <div class="row">
+                         <div class="wow fadeInUp col-md-6 col-sm-12" data-wow-delay="0.4s">
+                              <div id="google-map">
+                                   <iframe
+                                        :src="contact.map"
+                                        allowfullscreen></iframe>
+                              </div>
+                         </div>
+
+                         <div class="col-md-6 col-sm-12">
+
+                              <div class="col-md-12 col-sm-12">
+                                   <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                                        <h2>{{ contact.form.title }}</h2>
+                                   </div>
+                              </div>
+
+                              <!-- CONTACT FORM -->
+                              <form action="#" method="post" class="wow fadeInUp" id="contact-form" role="form"
+                                   data-wow-delay="0.8s">
+
+                                   <!-- IF MAIL SENT SUCCESSFUL  // connect this with custom JS -->
+                                   <h6 class="text-success">{{ contact.form.success }}</h6>
+
+                                   <!-- IF MAIL NOT SENT -->
+                                   <h6 class="text-danger">{{ contact.form.invalid_mail }}</h6>
+
+                                   <div class="col-md-6 col-sm-6">
+                                        <input type="text" class="form-control" id="cf-name" name="name"
+                                             :placeholder="contact.form.placeholders.name">
+                                   </div>
+
+                                   <div class="col-md-6 col-sm-6">
+                                        <input type="email" class="form-control" id="cf-email" name="email"
+                                             :placeholder="contact.form.placeholders.email">
+                                   </div>
+
+                                   <div class="col-md-12 col-sm-12">
+                                        <input type="text" class="form-control" id="cf-subject" name="subject"
+                                             :placeholder="contact.form.placeholders.subject">
+
+                                        <textarea class="form-control" rows="6" id="cf-message" name="message"
+                                             :placeholder="contact.form.placeholders.content"></textarea>
+
+                                        <button type="submit" class="form-control" id="cf-submit" name="submit">{{ contact.form.button_text }}</button>
+                                   </div>
+                              </form>
+                         </div>
+
+                    </div>
+               </div>
+          </section>
+
+
+          <!-- FOOTER -->
+          <footer id="footer" data-stellar-background-ratio="0.5">
+               <div class="container">
+                    <div class="row">
+                         <div class="col-md-3 col-sm-8">
+                              <div class="footer-info">
+                                   <div class="section-title">
+                                        <h2 class="wow fadeInUp" data-wow-delay="0.2s">Find us</h2>
+                                   </div>
+                                   <address class="wow fadeInUp" data-wow-delay="0.4s">
+                                        <p>{{ address }}</p>
+                                   </address>
+                              </div>
+                         </div>
+
+                         <div class="col-md-3 col-sm-8">
+                              <div class="footer-info">
+                                   <div class="section-title">
+                                        <h2 class="wow fadeInUp" data-wow-delay="0.2s">{{ footer.reservation }}</h2>
+                                   </div>
+                                   <address class="wow fadeInUp" data-wow-delay="0.4s">
+                                        <p>{{ footer.phone }}</p>
+                                        <p><a href="mailto:info@company.com">{{ footer.gmail }}</a></p>
+                                        <p>LINE: KhanhVuong </p>
+                                   </address>
+                              </div>
+                         </div>
+
+                         <div class="col-md-4 col-sm-8">
+                              <div class="footer-info footer-open-hour">
+                                   <div class="section-title">
+                                        <h2 class="wow fadeInUp" data-wow-delay="0.2s">{{ open_hours_text }}</h2>
+                                   </div>
+                                   <div class="wow fadeInUp" data-wow-delay="0.4s">
+                                        <p>Monday: Closed</p>
+                                        <div v-for="open_hour in footer.open_hours">
+                                             <strong>{{ open_hour.date }}</strong>
+                                             <p>{{ open_hour.hours }}</p>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <div class="col-md-2 col-sm-4">
+                              <ul class="wow fadeInUp social-icon" data-wow-delay="0.4s">
+                                   <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
+                                   <li><a href="#" class="fa fa-twitter"></a></li>
+                                   <li><a href="#" class="fa fa-instagram"></a></li>
+                                   <li><a href="#" class="fa fa-google"></a></li>
+                              </ul>
+
+                              <div class="wow fadeInUp copyright-text" data-wow-delay="0.8s">
+                                   <p><br>{{ footer.copyright }}<br>{{ footer.company_name }}
+
+                                        <br><br>Design: Archius Vương</p>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </footer>
+     </div>
+
+
+     <!-- SCRIPTS -->
+     <!-- Remember to change the VueJS link to the production version-->
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+     <script src="js/main.js"></script>
+     <script src="js/jquery.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/jquery.stellar.min.js"></script>
+     <script src="js/wow.min.js"></script>
+     <script src="js/owl.carousel.min.js"></script>
+     <script src="js/jquery.magnific-popup.min.js"></script>
+     <script src="js/smoothscroll.js"></script>
+     <script src="js/custom.js"></script>
+
+</body>
+
+</html>
